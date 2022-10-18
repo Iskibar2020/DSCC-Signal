@@ -1,0 +1,151 @@
+/* Main Map */
+#mainmap {
+  height: 100vh;
+}
+
+/*Side Panel*/
+#side-bar {
+  color: #e85a4f;
+  text-align: center;
+  background: #eae7dc;
+  font-family: "Lato", sans-serif;
+  font-size: 2rem;
+  text-align: justify center;
+  overflow: auto;
+  height: 100vh;
+}
+#side-bar h2 {
+  color: #8e8d8a;
+  font-family: "Roboto Slab", serif;
+}
+
+/*--------------------------------------------------*/
+
+/* Main Button, Child Button & Hide Button */
+/*Hide Button */
+.btn-hide {
+  color: #e98074;
+  background: #ffffff;
+  border: none;
+  border-radius: 5px;
+  border-color: beige;
+}
+
+.btn-hide:hover {
+  box-shadow: -6px 6px 12px #a4a4a4, 6px -6px 12px #ffffff;
+}
+
+/*Main Button */
+.Btn {
+  font-family: "Merriweather", serif;
+  font-size: 1.75rem;
+  color: #e98074;
+  padding: 0;
+  border: none;
+  width: 22vw;
+  transition: 0.9s;
+  height: 50px;
+  margin: 5px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: -6px 6px 12px #a4a4a4, 6px -6px 12px #ffffff;
+}
+
+.Btn:hover {
+  font-family: "Merriweather", serif;
+  font-size: 1.75rem;
+  color: white;
+  cursor: pointer;
+  width: 22vw;
+  border-radius: 10px;
+  background: #d8c3a5;
+}
+
+/* Child Button */
+.Child-Btn {
+  font-family: "Merriweather", serif;
+  color: #d8c3a5;
+  font-size: 1.5rem;
+  padding: 0;
+  float: left;
+  border: none;
+  width: 9vw;
+  transition: 0.9s;
+  height: 50px;
+  margin: 5px;
+  margin-left: 20px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  background: #3d5a80;
+  box-shadow: -6px 6px 12px #a4a4a4, 6px -6px 12px #ffffff;
+}
+
+.Child-Btn:hover {
+  font-family: "Merriweather", serif;
+  color: #ffffff;
+  padding: 0;
+  float: left;
+  border: none;
+  width: 9vw;
+  transition: 0.9s;
+  height: 50px;
+  margin: 5px;
+  margin-left: 20px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  background: #d8c3a5;
+  box-shadow: -6px 6px 12px #a4a4a4, 6px -6px 12px #ffffff;
+}
+
+/* Button Div */
+.inner {
+  display: inline-block;
+}
+
+/*--------------------------------------------------*/
+
+/* Button Link */
+/*Default Link */
+.inner a:link {
+  color: #ffffff;
+  text-decoration: none;
+}
+/* visited link */
+a:visited {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+/* mouse over link */
+a:hover {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+/*--------------------------------------------------*/
+
+/* Plug-Ins */
+/* Co-Ordinates */
+.leaflet-container .leaflet-control-coord-projection {
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 5px #bbb;
+  padding: 0 5px;
+  margin: 0;
+  color: #333;
+  font: 11px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+#search-box {
+  padding-left: 20px;
+  padding-top: 20px;
+  width: 800px;
+  height: 100px;
+}
+#result {
+  padding-left: 20px;
+  padding-top: 20px;
+  width: 800px;
+  height: 100px;
+}
+.leaflet-locationiq-results {
+  padding-top: 45px;
+}

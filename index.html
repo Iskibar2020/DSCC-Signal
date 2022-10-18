@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Laflet CDN -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+      integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+      integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+      crossorigin=""
+    ></script>
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- JQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Bootstrap CDN -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Local Files -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital@0;1&family=Merriweather:wght@300&family=Roboto+Slab:wght@500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="/Resource/L.Icon.Pulse.css" />
+    <link rel="stylesheet" href="/Resource/leaflet-control-boxzoom.css" />
+    <link rel="stylesheet" href="/Resource/L.Control.Zoomslider.css" />
+    <link rel="stylesheet" href="/Resource/L.VisualClick.css" />
+    <link rel="stylesheet" href="/Resource/leaflet.magnifyingglass.css" />
+    <link rel="stylesheet" href="/Resource/L.Control.MousePosition.css" />
+    <link rel="stylesheet" href="/Resource/leaflet-history.css" />
+    <link rel="stylesheet" href="/Resource/leaflet.magnifyingglass.css" />
+    <link rel="stylesheet" href="/Resource/L.switchBasemap.css" />
+    <link
+      rel="stylesheet"
+      href="https://maps.locationiq.com/v2/libs/leaflet-geocoder/1.9.6/leaflet-geocoder-locationiq.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/Resource/leaflet-styleeditor/css/Leaflet.StyleEditor.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.css"
+    />
+    <link rel="stylesheet" href="/Resource/leaflet-ruler.css" />
+    <link rel="stylesheet" href="/Resource/Control.Loading.css" />
+    <link rel="stylesheet" href="/Resource/Control.FullScreen.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+    <script src="/Resource/L.Icon.Pulse.js"></script>
+    <script src="/Resource/leaflet.PopupMovable.js"></script>
+    <script src="/Resource/leaflet.rightclickzoom.js"></script>
+    <script src="/Resource/leaflet-hash.js"></script>
+    <script src="/Resource/leaflet-control-boxzoom-src.js"></script>
+    <script src="/Resource/L.Control.Zoomslider.js"></script>
+    <script src="/Resource/L.VisualClick.js"></script>
+    <script src="/Resource/leaflet.magnifyingglass.js"></script>
+    <script src="/Resource/L.Control.MousePosition.js"></script>
+    <script src="/Resource/leaflet-history.js"></script>
+    <script src="/Resource/leaflet.magnifyingglass.js"></script>
+    <script src="/Resource/L.switchBasemap.js"></script>
+    <script src="https://maps.locationiq.com/v2/libs/leaflet-geocoder/1.9.6/leaflet-geocoder-locationiq.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <script src="/Resource/leaflet-styleeditor/javascript/Leaflet.StyleEditor.js"></script>
+    <script src="/Resource/leaflet-styleeditor/javascript/Leaflet.StyleForms.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.2/leaflet.draw.js"></script>
+    <script src="/Resource/leaflet-ruler.js"></script>
+    <script src="/Resource/Control.Loading.js"></script>
+    <script src="/Resource/Control.FullScreen.js"></script>
+
+    <link rel="stylesheet" href="/style.css" />
+    <title>DSCC Signal</title>
+  </head>
+  <body>
+    <!-- Side Panel -->
+    <div id="side-bar" class="block col-md-3">
+      <!-- Project Description -->
+      <img src="/img/DSCC.png" alt="DSCC" width="100vw" style="margin: 2vw" />
+      <p>
+        Consultancy Services for the Feasibility study with improvement of
+        different intersections including traffic signal under DSCC area
+      </p>
+      <!------------------------------------------------------------------------------>
+      <!------------------------------------------------------------------------------>
+
+      <!-- Juntion Information -->
+      <h2>Junction List</h2>
+
+      <!-- Juntion 01: Arambagh -->
+      <div class="Arambagh">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Arambagh" class="Btn">Arambagh</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Arambagh-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 02: Atish Deepankar Road -->
+      <div class="ADRoad">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="ADRoad" class="Btn">Atish Deepankar Road</button>
+        </div>
+        <!-- Child Button -->
+        <div id="ADRoad-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 03: Bahdursha Park (01) -->
+      <div class="BPark-01">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="BPark1" class="Btn">Bahdursha Park (01)</button>
+        </div>
+        <!-- Child Button -->
+        <div id="BPark1-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 04: Bahdursha Park (02) -->
+      <div class="BPark-02">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="BPark2" class="Btn">Bahdursha Park (02)</button>
+        </div>
+        <!-- Child Button -->
+        <div id="BPark2-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 05: Bahdursha Park (03) -->
+      <div class="BPark-03">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="BPark3" class="Btn">Bahdursha Park (03)</button>
+        </div>
+        <!-- Child Button -->
+        <div id="BPark3-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 06: Baily Road -->
+      <div class="Baily Road">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="BRoad" class="Btn">Baily Road</button>
+        </div>
+        <!-- Child Button -->
+        <div id="BRoad-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 07: New Eskaton Road (Bangla Motor) -->
+      <div class="BMotor">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="BMotor" class="Btn">Bangla Motor</button>
+        </div>
+        <!-- Child Button -->
+        <div id="BMotor-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 08: Bangshal -->
+      <div class="Bangshal">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Bangshal" class="Btn">Bangshal</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Bangshal-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 09: Bata Signal -->
+      <div class="BSignal">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="BSignal" class="Btn">Bata Signal</button>
+        </div>
+        <!-- Child Button -->
+        <div id="BSignal-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposedd <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 10: Bijoy Nagar -->
+      <div class="BijNagar">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="BNagar" class="Btn">Bijoy Nagar</button>
+        </div>
+        <!-- Child Button -->
+        <div id="BNagar-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 11: Curzon Hall -->
+      <div class="CurHall">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="CurHall" class="Btn">Curzon Hall</button>
+        </div>
+        <!-- Child Button -->
+        <div id="CurHall-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 12: Dhanmondi -6,7 -->
+      <div class="Dhan67">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Dhan67" class="Btn">Dhanmondi 6 & 7</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Dhan67-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 13: Dhanmondi 27 -->
+      <div class="Dhan27">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Dhan27" class="Btn">Dhanmondi 27</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Dhan27-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a
+                href="https://photos.app.goo.gl/69Be94GUyLGSrReeA"
+                target="_blank"
+                >General <br />Overview</a
+              >
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a
+                href="https://photos.app.goo.gl/bjUyYJwn4XJshiut9"
+                target="_blank"
+                >Existing <br />Images</a
+              >
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a
+                href="https://en.dwgfastview.com/openDwg?type=d57c5b2eadacccbf7def7cb58276b74cc1b8b72d92363f417780860cd031d64eefe2825cdc112b428948226ba2091411"
+                target="_blank"
+                >Existing <br />Drawing</a
+              >
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a
+                href="https://docs.google.com/spreadsheets/d/1TwqYUWNnVLASYJKhEsCj0Pxa7TJyg5cV-4ImxPdmr4I/edit?usp=sharing"
+                target="_blank"
+                >Proposed <br />Drawing</a
+              >
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a
+                href="https://docs.google.com/spreadsheets/d/1TwqYUWNnVLASYJKhEsCj0Pxa7TJyg5cV-4ImxPdmr4I/edit?usp=sharing"
+                target="_blank"
+                >Signal timing & <br />Phasing</a
+              >
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 14: Dhanmondi 32 -->
+      <div class="Dhan32">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Dhan32" class="Btn">Dhanmondi 32</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Dhan32-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 15: Dholaikhal (Nababpur Road) -->
+      <div class="Dholaikhal">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="NRoad" class="Btn">Dholaikhal</button>
+        </div>
+        <!-- Child Button -->
+        <div id="NRoad-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 16: Daynik Bangla -->
+      <div class="DBangla">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="DBangla" class="Btn">Daynik Bangla</button>
+        </div>
+        <!-- Child Button -->
+        <div id="DBangla-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 17: Azimpur (Eden College) -->
+      <div class="EdCollege">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="EdCollege" class="Btn">Eden College</button>
+        </div>
+        <!-- Child Button -->
+        <div id="EdCollege-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposedd <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 18: English Road (Raishaheb Bazar) -->
+      <div class="EngRoad">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="EngRoad" class="Btn">English Road</button>
+        </div>
+        <!-- Child Button -->
+        <div id="EngRoad-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposedd <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 19: Fokirapul-->
+      <div class="Fokirapul">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Fokirapul" class="Btn">Fokirapul</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Fokirapul-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 20: Gulapshah Mazar -->
+      <div class="GulapMazar">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="GuMazar" class="Btn">Gulapshah Mazar</button>
+        </div>
+        <!-- Child Button -->
+        <div id="GuMazar-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 21: Gulistan Square-->
+      <div class="GSquare">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="GSquare" class="Btn">Gulistan Square</button>
+        </div>
+        <!-- Child Button -->
+        <div id="GSquare-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 22: Gulistan Zero Point -->
+      <div class="GZPoint">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="GZPoint" class="Btn">Gulistan Zero Point</button>
+        </div>
+        <!-- Child Button -->
+        <div id="GZPoint-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 23: Ibn Sina Hospital, Dhanmondi-15 -->
+      <div class="ISHospital">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="ISHospital" class="Btn">Ibn Sina Hospital</button>
+        </div>
+        <!-- Child Button -->
+        <div id="ISHospital-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 24: Kakrail (Inner Circular Road)-->
+      <div class="KakrailICR">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="ICRoad" class="Btn">Inner Circular Road</button>
+        </div>
+        <!-- Child Button -->
+        <div id="ICRoad-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 25: Ittefaq -->
+      <div class="Ittefaq">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Ittefaq" class="Btn">Ittefaq</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Ittefaq-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 26: Janata Bank -->
+      <div class="JBank">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="JBank" class="Btn">Janata Bank</button>
+        </div>
+        <!-- Child Button -->
+        <div id="JBank-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 27: Jigatola -->
+      <div class="Jigatola">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Jigatola" class="Btn">Jigatola</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Jigatola-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 28: Kadam Chattor -->
+      <div class="KChattor">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="KChattor" class="Btn">Kadam Chattor</button>
+        </div>
+        <!-- Child Button -->
+        <div id="KChattor-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 29: Kakrail Mosque-->
+      <div class="KMosque">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="KMosque" class="Btn">Kakrail Mosque</button>
+        </div>
+        <!-- Child Button -->
+        <div id="KMosque-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 30: Dhanmondi 10 -->
+      <div class="Dhan10">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Dhan10" class="Btn">Kalabagan</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Dhan10-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 31: Kamalapur Railway Station -->
+      <div class="KRStation">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="KRStation" class="Btn">Kamalapur Railway Station</button>
+        </div>
+        <!-- Child Button -->
+        <div id="KRStation-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 32: Katabon (Sonargaon Road) -->
+      <div class="Katabon">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Katabon" class="Btn">Katabon</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Katabon-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 33: Kathalbagan -->
+      <div class="Kathalbagan">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Kathalbagan" class="Btn">Kathalbagan</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Kathalbagan-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 34: Malibagh Chowdhuripara -->
+      <div class="MChow">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="MChow" class="Btn">Malibagh Chowdhuripara</button>
+        </div>
+        <!-- Child Button -->
+        <div id="MChow-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 35: Malibag Mor -->
+      <div class="MaliMor">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="MalMor" class="Btn">Malibag Mor</button>
+        </div>
+        <!-- Child Button -->
+        <div id="MalMor-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 36: Malibag Rail Crossing -->
+      <div class="MRCrossing">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="MRCrossing" class="Btn">Malibag Rail Crossing</button>
+        </div>
+        <!-- Child Button -->
+        <div id="MRCrossing-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 37: Minto Road (Hotel Sheraton)-->
+      <div class="MinRoad">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="MinRoad" class="Btn">Minto Road</button>
+        </div>
+        <!-- Child Button -->
+        <div id="MinRoad-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 38: Motsho Bhaban-->
+      <div class="MBhaban">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="MBhaban" class="Btn">Motsho Bhaban</button>
+        </div>
+        <!-- Child Button -->
+        <div id="MBhaban-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 39: Mouchak -->
+      <div class="Mouchak">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Mouchak" class="Btn">Mouchak</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Mouchak-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 40: New Market -->
+      <div class="NewMarket">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="NewMar" class="Btn">New Market</button>
+        </div>
+        <!-- Child Button -->
+        <div id="NewMar-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 41: Nilkhet -->
+      <div class="Nilkhet">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Nilkhet" class="Btn">Nilkhet</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Nilkhet-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 42: Panthapath, Green Road -->
+      <div class="Panthapath">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="PanthapathGR" class="Btn">Panthapath</button>
+        </div>
+        <!-- Child Button -->
+        <div id="PanthapathGR-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 43: Pir Jangi Mazar -->
+      <div class="PJMazar">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="PJMazar" class="Btn">Pir Jangi Mazar</button>
+        </div>
+        <!-- Child Button -->
+        <div id="PJMazar-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 44: Polashi Intersection -->
+      <div class="Polashi">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Polashi" class="Btn">Polashi</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Polashi-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 45: Rajarbagh-->
+      <div class="Rajarbagh">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Rajarbagh" class="Btn">Rajarbagh</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Rajarbagh-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 46: Rajarbagh Police Hospital -->
+      <div class="RPHospital">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="RPHospital" class="Btn">Rajarbagh Police Hospital</button>
+        </div>
+        <!-- Child Button -->
+        <div id="RPHospital-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 47: Ramna Thana -->
+      <div class="RThana">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="RThana" class="Btn">Ramna Thana</button>
+        </div>
+        <!-- Child Button -->
+        <div id="RThana-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 48: Scienclab -->
+      <div class="Scienclab">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="SciLab" class="Btn">Science Lab</button>
+        </div>
+        <!-- Child Button -->
+        <div id="SciLab-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 49: Shahbagh-->
+      <div class="Shahbagh">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Shahbagh" class="Btn">Shahbagh</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Shahbagh-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 50: Satmasjid Road (Shankar), Dhanmondi-27 -->
+      <div class="Shankar">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Shankar" class="Btn">Shankar</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Shankar-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 51: Shantinagar -->
+      <div class="Shantinagar">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Shantinagar" class="Btn">Shantinagar</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Shantinagar-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 52: Sapla Chottor -->
+      <div class="SapChottor">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="SChottor" class="Btn">Shapla Chottor</button>
+        </div>
+        <!-- Child Button -->
+        <div id="SChottor-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 53: Topkhana -->
+      <div class="Topkhana">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="Topkhana" class="Btn">Topkhana</button>
+        </div>
+        <!-- Child Button -->
+        <div id="Topkhana-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 54: Toyenbee Circular Road -->
+      <div class="ToyenbeeCR">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="TCRoad" class="Btn">Toyenbee Circular Road</button>
+        </div>
+        <!-- Child Button -->
+        <div id="TCRoad-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Juntion 55: Zahir Raihan Road -->
+      <div class="ZRRoad">
+        <!-- Main Button -->
+        <div class="inner">
+          <button id="ZRRoad" class="Btn">Zahir Raihan Road</button>
+        </div>
+        <!-- Child Button -->
+        <div id="ZRRoad-child">
+          <div class="inner">
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">General <br />Overview</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Images</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Existing <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Proposed <br />Drawing</a>
+            </button>
+            <button id="btnLocate" class="Child-Btn">
+              <a href="#" target="_blank">Signal timing & <br />Phasing</a>
+            </button>
+          </div>
+        </div>
+      </div>
+      <h2>Consultants</h2>
+      <img
+        src="/img/IMAGE-removebg-preview.png"
+        alt="Image Logo"
+        width="80vw"
+      />
+      <img src="/img/EPC-removebg-preview.png" alt="EPC Logo" width="80vw" />
+    </div>
+    <!-- Initialization of Main Map -->
+    <div id="mainmap" class="col-md-9"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
